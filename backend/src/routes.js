@@ -1,13 +1,14 @@
 const express = require('express');
-
 const routes = express.Router();
 
-routes.post('/users', (request, response) => {
-  console.log(request.body);
+const OngController = require('./controllers/OngController');
+const IncidentsController = require('./controllers/IncidentsController');
 
-  response.json(request.body);
-});
+routes.get('/ongs', OngController.index);
+routes.post('/ongs', OngController.create);
 
-routes.get('/aleluia', (request, response) => response.send('Hello World'));
+routes.get('/incidents', IncidentsController.index);
+routes.post('/incidents', IncidentsController.create);
+
 
 module.exports = routes;
